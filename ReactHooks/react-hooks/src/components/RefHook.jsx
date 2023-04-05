@@ -9,10 +9,31 @@ function RefHook() {
         password:''
     })
     const handleSubmit=(e)=>{
+        const user=values.username
+        const mail=values.email
+        const pass=values.password
         e.preventDefault()
-        console.log(values.username)
-        console.log(values.email)
-        console.log(values.password)
+        fetch('http://localhost:5000/register',{
+            method:'POST',
+            crossDomain:true,
+            header:{
+                "Content-Type":"application/json",
+                Accept:"application/json",
+                "Acess-Control-Allow-Origin":"*",
+
+            },
+            body:JSON.stringify({
+                user,
+                mail,
+                pass,
+
+            })
+
+            
+        }) 
+        .then(res=>res.json())
+        .then(data=>console.log(data))
+        .catch(error=>console.log(error))
 
     }
     useEffect(()=>{
