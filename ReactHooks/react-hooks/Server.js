@@ -1,5 +1,6 @@
 const express=require('express')
 const app=express();
+console.log(express)
 app.use(express.json());
 app.post('/register',(req,res)=>{
     console.log(req.body)
